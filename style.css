@@ -1,0 +1,33 @@
+body {
+	font-family: "Open Sans", sans-serif;
+	margin-left: 20px;
+}
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Roboto", sans-serif;
+	margin-bottom: 0;
+    font-size: 25px;
+}
+.navbar{
+
+	margin-left: -200px;
+
+}
+footer {
+	margin-top: 520px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.left-content {
+	text-align: left;
+}
+
+.left-content p {
+	margin: 0;
+}
+
