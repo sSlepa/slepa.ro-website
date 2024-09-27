@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container">
+			<a class="navbar-brand" href="../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../usefull_websites.html"
+						  	title="course" >Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+
+        <h2>Execution time în C++ - <a href="https://github.com/sSlepa/Invers-Hash-si-altele/blob/main/CPU_Clock.cpp" 
+            target="_blank" style="color: black;">Github</a></h2>
+        <hr>
+    <h2>La ce ne ajută să știm timpul de executie?</h2>
+    <ul>
+
+        <li>Putem crea o statistică a timpilor de execuție a unor algoritmi ce execută acelasi task (De exemplu sortarea unui vector).</Li>
+        <li>Putem verifica diferența dintre timpul necesar pentru a rezolva problema si timpul curent al programului.</Li>
+        <li>De obicei folosit pe partea de research în computer science dar este "nice" sa știm cu toții cat mai multe 😁</Li>
+        
+        <div class = "cod_timp">
+        <code style="font-size: 14px;">#include &ltiostream&gt<br>
+            #include &ltWindows.h&gt<br>
+            using namespace std;<br>
+
+            static inline int64_t GetTicks() {<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;LARGE_INTEGER ticks;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;if (!QueryPerformanceCounter(&ticks)) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Handle error (you can throw an exception or handle it differently)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// winrt::throw_last_error();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return ticks.QuadPart;<br>
+            }<br>
+            int main(){<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;int64_t start = GetTicks();<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;///Aici pui algoritmul / apelul subprogramului pentru care contorizezi timpul<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;int64_t end = GetTicks();<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;double elapsedTimeSeconds = (double)(end - start);<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << "Elapsed time: " << fixed << setprecision(3) << elapsedTimeSeconds / 1e7 << " seconds";<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+            }</code>
+        </div>
+    </ul>
+    
+</div>
+
+</body>
+
+</html>

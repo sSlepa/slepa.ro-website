@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container">
+			<a class="navbar-brand" href="../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">Pair & Tuple</h1>
+
+<hr>
+
+<h2 >De ce abordăm aceste 2 structuri de date înainte de cursurul efectiv ? </h2>
+<ul>
+<li>În limbajul de programare C++, aceste 2 structuri ne permit utilizarea rapidă a unor perechi de 2 sau mai multe elemente, 
+    de diferite tipuri de date pentru a ne ușura munca. Avem ca și echivalent <code>struct</code> care se comportă identic</li>
+<li>Diferențe semnificative la timpul de execuție nu prea există intre <code>pair, tuple si struct</code>,
+    alegerea structurii fiind o preferință personală.</li>
+</ul>
+
+<hr>
+<h2>Pair în C++</h2>
+<ul>
+    <li>Declarare : <code>pair &lttip_data,tip_data&gt nume_pereche;</code></li>
+    <li>Cum accesăm campurile din pair ? Folosind <code>nume_pereche.first</code> și <code>nume_pereche.second</code></li>
+    <li>Exemplu de declarare : <code>pair&ltint,int&gt primul_pair;</code></li>
+    <li>Putem asigna valori astfel : <code>pair&ltint,int&gt primul_pair{1,2}</code> sau după declarare sa punem pe 
+        rând in <code>.first </code> și <code>.second</code> valorile dorite.</li>
+    <li>Nu contează tipurile de date din interior, putem avea <code>pair&ltstring,int&gt</code> sau 
+        <code>pair&ltstring,string&gt</code> sau chiar <code>pair&ltpair&ltint,int&gt,string&gt</code>.</li>
+    <li>Nu contează tipurile de date din interior, putem avea <code>pair&ltstring,int&gt</code> sau 
+            <code>pair&ltstring,string&gt</code> sau chiar <code>pair&ltpair&ltint,int&gt,string&gt</code>.</li>
+    <li>Funcția <code>get&ltposition&gt(structura_date)</code> poate fi și ea folosită pentru a accesa elemente din pair.
+    Pentru a accesa (afisa in cazul de față) elementul din first putem face astfel : <br><code>cout << get&lt0&gt(primul_pair);</code>
+    Apelăm cu poziția 0 deoarece este un standard în informatică indexarea de la 0.
+    <li>În materialele ce urmează se vor defini si structuri de date mult mai complexe.</li>
+</li>
+</ul>
+
+<hr>
+
+<h2>Tuple în C++</h2>
+<ul>
+    <li>Declarare : <code>tuple &lttip_data,tip_data, ... , tip_data&gt nume_tuple;</code></li>
+    <li>Accesarea se face diferit în acest caz deoarece ar fi imposibilă adaugarea identificatorului de acces 
+        <code>.third, .fourth, ...</code> structura fiind capabilă de a reține un număr mare de elemete.<br>
+        (Exemplu : Ar fi o practică proastă să accesăm elementul cu .twentyseventh).</li>
+    <li>Exemplu de declarare : <code>tuple &ltint, int , string, ... int, string , int&gt prima_tupla;</code></li>
+     <li>Identic ca la pair, avem voie sa punem <b>aproape orice</b> înauntru.</li>
+    <li>Putem folosi <code>get&ltposition&gt(structura_date)</code> sau să folosim instrucțiunea <code>tie()</code> în care 
+        punem același numar de elemente și de același tip : <code>tie(x,y,z) = prima_tupla; </code><br>
+        (Presupunem că <code>prima_tupla</code> are 3 elemente de tip <code>int</code>).</li>
+    <li>Limita de elemente din interior este dată in special de compilator dar și de calculatorul pe care se rulează codul.</li>
+
+</ul>
+<br>
+</div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
