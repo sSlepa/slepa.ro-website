@@ -16,6 +16,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	
 </head>
 
 <body>
@@ -36,13 +37,12 @@
 						<a class="nav-link" href="usefull_websites.html"
 						  	title="course">Usefull Websites</a>
 					</li>
-					
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<div id="content">
+	<div class = "content">
 	<h1 id="curs-stl" style="margin-top: 5px;">String C++</h1>
 <hr>
 <h2 id="ce-este-stl">Ce este un string?</h2>
@@ -72,9 +72,56 @@ clasa std::string</code></li>
 <li>C++ oferă o gamă largă de funcții pentru manipularea și gestionarea lor</li>
 <li>Nu mai trebuie să pierdem timp pe implementarea structurilor de date 
 și nu mai e nevoie să te preocupi de dimensiunea tablourilor sau de manipularea manuală a memoriei.</li>
-<li>Simplifică mult viața</li>
+<li>Le putem "lipi" mult mai usor. Scriind operația urmatoare lipim pe "b" la "a" : <br><code>string a,b;</code><br> <code>a = a + b</code></li>
+<li>Simplifică mult viața basically.</li>
+</ul>
+<hr>
+<h2 id="cateva_functii">Câteva funcții utile</h2>
+<h3 style="font-size: 16px;display: inline-block;">Funcțiile se apeleaza cu "nume_string"</h3><h3 style="font-size: 30px;display: inline-block;" >.</h3>
+<h3 style="font-size: 16px;display: inline-block;">"nume_functie(parametrii)" adică : 
+	<code>un_string_random.functie_predefinita(parametrii);</code></h3>
+<ul>
+<li>Funcția <code>size()</code> sau <code>length()</code> ce returnează lungimea string-ului<br></li>
+<li>Functia <code>substr(pos,len)</code> ce extrage dintr-un string, un substring ce incepe la pozitia <code>pos</code> 
+	si are lungime <code>len</code>.</li>
+<li>Funcția <code>clear()</code> ce goleste memoria din string acesta devenind gol.</li>
+<li>Funcția <code>empty()</code> testează daca un string este gol, returnând o valorea de tip <code>boolean.</code></li>
+<li>Putem accesa orice pozitie din string folosind operatorul <code>[]</code> : <br><code>string a = "Salut"</code><br>
+<code>cout << a[3];</code><br>
+output : u</li>
+<li>Funcția <code>push_back(caracter)</code> ce adaugă la final un caracter și <code>pop_back()</code> 
+	ce sterge de la final un caracter.</li>
+<li>Operatorul "==" este supraincărcat pentru clasa string deci se poate efectua direct comparația intre 2 string-uri : 
+	<code>cout << (a == b)</code>. Se returneaza <code>0</code> sau <code>1</code>.</li>
+<li>Funcția <code>insert(pos,string)</code> ce inserează dupa pozitia <code>pos</code> alt string si <code>erase(pos,len)</code>
+ce sterge <code>len</code> caractere dupa pozitiția <code>pos</code>.</li>
+<li>String-urile din C++ dispun și de iteratori de parcurgere. Avem <code>begin()</code> ce pointeaza spre inceputul string-ului
+și <code>end()</code> ce pointează spre final <br>
+Exemple de parcurgeri : <br>
+<h2 style="color: #a846b9;font-size: 16px;">1) Cu iterator :<br></h2>
+<code>string a = "salutare";<br>
+    for(string::iterator i = a.begin(); i != a.end() ; ++i)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;cout << *i;</code>
+		<br><br>
+<h2 style="color: #a846b9;font-size: 16px;">2) Folosind cuvântul cheie <code>"auto"</code> care preia tipul de date automat :<br></h2>
+<code>string a = "salutare;<br>
+	for(auto i : a)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;cout << i;<br></code><br>
+
+<h2 style="color: #a846b9;font-size: 16px;">3) Parcurgere standard :<br></h2>
+<code>string a = "salutare;<br>
+		for(int i = 0 ; i < a.size() ; ++i)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;cout << a[i];<br></code>
+</li>
 </ul>
 
+<hr>
+<ul>
+<h2 id="de-ce">Materiale avansate</h2>
+<li>String Hashing</li>
+<li>String Matching</li>
+
+</ul>
 
 </div>
 </body>
