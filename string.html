@@ -37,6 +37,10 @@
 						<a class="nav-link" href="usefull_websites.html"
 						  	title="course">Usefull Websites</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="contact.html"
+						  	title="course" >Contact</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -116,14 +120,42 @@ Exemple de parcurgeri : <br>
 </ul>
 
 <hr>
+<h2 class="Advanced">Materiale avansate</h2>
+
+<h1 style="display: inline-block;font-size: 15px;">1)</h1> String Hashing - <a href="https://cp-algorithms.com/string/string-hashing.html" 
+	style="color: black;" target="_blank">Material Extern</a>
+
 <ul>
-<h2 id="de-ce">Materiale avansate</h2>
-<li>String Hashing</li>
-<li>String Matching</li>
+<li>Hash-urile ne ajută să comparăm în timp constant 2 string-uri O(1);</li>
+<li>Ideea este una simplă, aceea că transformăm fiecare string într-un număr iar apoi acele 2 numere se compară instant.</li>
+<li>Hashing-ul are aplicații în criptografie, securitate cibernetică dar și în programarea competitivă, deoarece 
+	ajută la timpul de execuție al programelor.</li>
+<li>Un exemplu de formulă prin care "hash-uim" un string : <br></li>
+<code style="font-size: 17px;color: #2e00c9;">Hash(a) = (a[0] + a[1] &bull; p + a[2] &bull; p<sup>2</sup> + 
+	... + a[a.size() - 1] &bull; p<sup>a.size() - 1</sup>) % MOD</code>
+<li>P este de obicei un număr prim (31, 59, etc.), MOD și el la rândul lui un număr prim foarte mare, de exemplu <code>1000000007</code> sau <code>984162946217979097</code> 
+	(Depinde de cerința problemei)</li>
+<li>Exemplu de implementare a unei funcții de hashing in C++ :<br>
+	<code style="color: #2e00c9;">long long compute_hash(string const& s) { <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;const int p = 31;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;const int m = 1e9 + 9;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;long long hash_value = 0;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;long long p_pow = 1;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;for (char c : s) {<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash_value = (hash_value + (c - 'a' + 1) * p_pow) % m;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_pow = (p_pow * p) % m;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;return hash_value;<br>
+	}</code>
 
+</li>
 </ul>
-
 </div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
 </body>
 
 </html>
