@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
 		<div class="container">
 			<a class="navbar-brand" href="../main.html">slepa.ro</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -69,7 +69,96 @@
     <li><code>nume_vector.push_back(variabila)</code> adaugă la finalul vectorului variabila introdusă intre paranteze.</li>
     <li><code>nume_vector.pop_back()</code> sterge de la finalul vectorului un element</li>
     <li><code>nume_vector.size()</code> returnează numărul de elemente ale vectorului</li>
-    <li></li>
+    <li><code>nume_vector.erase()</code> - Șterge unul sau mai multe elemente din vector la poziția specificată.
+		 Aceasta implică mutarea tuturor elementelor de după poziția ștearsă pentru a le rearanja.</li>
+    <li><code>nume_vector.resize()</code> - Redimensionează vectorul.</li>
+    <li><code>nume_vector.clear()</code> - Elimină toate elementele din vector, dar nu modifică capacitatea acestuia</li>
+    <li><code>nume_vector.empty()</code> - Verifică dacă vectorul este gol. Returnează <code>true</code> 
+		dacă vectorul este gol, altfel <code>false</code>.</li>
+	<li><code>begin()</code> - Returnează un iterator la primul element din vector. Acest iterator poate 
+		fi folosit pentru a parcurge elementele începând cu primul element.</li>
+    <li><code>end()</code> - Returnează un iterator care indică poziția "de după ultimul element" al vectorului. 
+		Acesta este utilizat pentru a marca sfârșitul unui interval de iterare.</li>
+    <li><code>vector&lt;int&gt;::iterator</code> - Este un tip de iterator specific pentru un vector de tip 
+		<code>int</code>. Poate fi folosit pentru a traversa și modifica elementele vectorului în mod eficient.</li>
+	
+</ul>
+
+<hr>
+
+<h1>Tipuri de parcurgere : <br></h1>
+<h2 style="color: #a846b9;font-size: 16px;">1) Cu iterator :<br></h2>
+		<code>vector&ltint&gt a;<br> 
+			for(int i = 0 ; i < 5 ; ++i)///Penru a usura adaugam primele 5 numere in vector<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;a.push_back(i);<br>
+			for(vector&ltint&gt::iterator i = a.begin(); i != a.end() ; ++i)<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;cout << *i;</code>
+				<br><br>
+		<h2 style="color: #a846b9;font-size: 16px;">2) Folosind cuvântul cheie <code>"auto"</code> care preia tipul de date automat :<br></h2>
+		<code>for(auto i : a)<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;cout << i;<br></code><br>
+		
+		<h2 style="color: #a846b9;font-size: 16px;">3) Parcurgere standard :<br></h2>
+		<code>for(int i = 0 ; i < a.size() ; ++i)<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;cout << a[i];<br></code>
+		</li>
+
+
+		<hr>
+<h1>Librăria &ltalgorithm&gt</h1>
+<ul>
+	<li>În C++, biblioteca algorithm conține un set de funcții standardizate pentru a efectua operații casupra containerelor, 
+		cum ar fi sortarea, căutarea, modificarea, și permutarea datelor. Ea face parte din Standard Template Library (STL) și este extrem de utilă pentru a simplifica și eficientiza 
+		manipularea colecțiilor de date.Aceasta este foarte utilizată pe vectorii din STL deoarece usurează scrierea mult, 
+		fiind totodata algoritmi eficienți.</li>
+	<li><code>std::sort(InputIt first, InputIt last, func)</code> - Sortează elementele între iteratorii <code>first</code> și <code>last</code> 
+		având ca parametru (nu e obligatoriu) functia cu numele <code>func</code> ce setează criteriul de sortare.</li>
+		
+	<li><code>std::find(InputIt first, InputIt last, const T& value)</code> -
+		 Caută primul element egal cu <code>value</code> între iteratorii <code>first</code> și <code>last</code>.</li>
+		
+	<li><code>std::binary_search(InputIt first, InputIt last, const T& value)</code> - 
+		Verifică dacă <code>value</code> există într-o secvență sortată definită de iteratorii <code>first</code> și <code>last</code>. Aceasta se realizează in O(log<sub>2</sub>n)</li> 
+		
+	<li><code>std::find_if(InputIt first, InputIt last, UnaryPredicate p)</code> -
+		 Caută primul element care îndeplinește condiția <code>p</code> între <code>first</code> și <code>last</code>.</li>
+		
+	<li><code>std::reverse(BidirIt first, BidirIt last)</code> - 
+		Inversează ordinea elementelor între iteratorii <code>first</code> și <code>last</code>.</li>
+		
+	<li><code>std::fill(ForwardIt first, ForwardIt last, const T& value)</code> -
+		 Umple secvența definită de iteratorii <code>first</code> și <code>last</code> cu valoarea <code>value</code>.</li>
+		
+	<li><code>std::replace(InputIt first, InputIt last, const T& old_value, 
+		const T& new_value)</code> - Înlocuiește toate aparițiile valorii <code>old_value</code> între iteratorii <code>first</code> și <code>last</code> cu <code>new_value</code>.</li>
+		
+	<li><code>std::next_permutation(BidirIt first, BidirIt last)</code> - 
+		Reordonează elementele între iteratorii <code>first</code> și <code>last</code> pentru a obține următoarea permutare lexicografică.</li>
+		
+	<li><code>std::count(InputIt first, InputIt last, const T& value)</code> - 
+		Numără aparițiile valorii <code>value</code> între iteratorii <code>first</code> și <code>last</code>.</li><li><code>std::accumulate(InputIt first, InputIt last, T init)</code> - Agregă valorile între <code>first</code> și <code>last</code>, începând cu valoarea inițială <code>init</code>.</li>
+		
+</ul>
+
+<hr>
+
+<h1>Probleme în care se poate utiliza <code>&ltvector&gt</code></h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 20px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+	<li><a href="https://www.pbinfo.ro/probleme/508/cautare-binara" target="_blank">Cautare Binară</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/661/triunghiuri1" target="_blank">Triunghiuri1</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/3163/secvmaxval" target="_blank">secvmaxval</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/241/interclasare" target="_blank">interclasare</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/3974/irdds" target="_blank">IRDDS</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/categorii/2/tablouri-unidimensionale-vectori" target="_blank">Pbinfo Vectori</a></li>
+	
 
 </ul>
 
