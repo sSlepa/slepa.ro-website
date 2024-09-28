@@ -64,91 +64,130 @@
 <h2>Operații și funcții aplicate pe Queue</h2>
 <ul>
 
-    <li><code>nume_coadă.push_back(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.push(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
     <li><code>nume_coadă.pop()</code> Sterge primul element.</li>
     <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
-    <li><code>nume_coadă.front()</code> - Furninează valorea din varful cozii.</li>
-    <li><code>nume_coadă.resize()</code> - Redimensionează vectorul.</li>
-    <li><code>nume_coadă.clear()</code> - Elimină toate elementele din coadă.</li>
-    <li><code>nume_coadă.empty()</code> - Verifică dacă coada este goală. Returnează <code>true</code> 
+    <li><code>nume_coadă.front()</code> Furninează valorea din varful cozii.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
 		dacă coada este goală, altfel <code>false</code>.</li>
 
 </ul>
 
 <hr>
 
-<h1>Tipuri de parcurgere : <br></h1>
-<h2 style="color: #a846b9;font-size: 16px;">1) Cu iterator :<br></h2>
-		<code>vector&ltint&gt a;<br> 
-			for(int i = 0 ; i < 5 ; ++i)///Penru a usura adaugam primele 5 numere in vector<br> 
-			&nbsp;&nbsp;&nbsp;&nbsp;a.push_back(i);<br>
-			for(vector&ltint&gt::iterator i = a.begin(); i != a.end() ; ++i)<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;cout << *i;</code>
-				<br><br>
-		<h2 style="color: #a846b9;font-size: 16px;">2) Folosind cuvântul cheie <code>"auto"</code> care preia tipul de date automat :<br></h2>
-		<code>for(auto i : a)<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;cout << i;<br></code><br>
-		
-		<h2 style="color: #a846b9;font-size: 16px;">3) Parcurgere standard :<br></h2>
-		<code>for(int i = 0 ; i < a.size() ; ++i)<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;cout << a[i];<br></code>
-		</li>
+<h1>Din păcate, parcurgerea se poate realiza intr-un singur mod : <br></h1>
+	<code>queue&ltint&gt q;<br> 
+			for(int i = 0 ; i < 5 ; ++i)///Pentru a usura adaugam primele 5 numere in vector<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;q.push(i);<br>
+            <br>
+			while(!q.empty()){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << q.front() << ' ';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;q.pop();<br>
+            }<br>
+		</code>
 
+<hr>
 
-		<hr>
-<h1>Librăria &ltalgorithm&gt</h1>
+<h1>Deque  în STL</h1>
 <ul>
-	<li>În C++, biblioteca algorithm conține un set de funcții standardizate pentru a efectua operații casupra containerelor, 
-		cum ar fi sortarea, căutarea, modificarea, și permutarea datelor. Ea face parte din Standard Template Library (STL) și este extrem de utilă pentru a simplifica și eficientiza 
-		manipularea colecțiilor de date.Aceasta este foarte utilizată pe vectorii din STL deoarece usurează scrierea mult, 
-		fiind totodata algoritmi eficienți.</li>
-	<li><code>std::sort(InputIt first, InputIt last, func)</code> - Sortează elementele între iteratorii <code>first</code> și <code>last</code> 
-		având ca parametru (nu e obligatoriu) functia cu numele <code>func</code> ce setează criteriul de sortare.</li>
-		
-	<li><code>std::find(InputIt first, InputIt last, const T& value)</code> -
-		 Caută primul element egal cu <code>value</code> între iteratorii <code>first</code> și <code>last</code>.</li>
-		
-	<li><code>std::binary_search(InputIt first, InputIt last, const T& value)</code> - 
-		Verifică dacă <code>value</code> există într-o secvență sortată definită de iteratorii <code>first</code> și <code>last</code>. Aceasta se realizează in O(log<sub>2</sub>n)</li> 
-		
-	<li><code>std::find_if(InputIt first, InputIt last, UnaryPredicate p)</code> -
-		 Caută primul element care îndeplinește condiția <code>p</code> între <code>first</code> și <code>last</code>.</li>
-		
-	<li><code>std::reverse(BidirIt first, BidirIt last)</code> - 
-		Inversează ordinea elementelor între iteratorii <code>first</code> și <code>last</code>.</li>
-		
-	<li><code>std::fill(ForwardIt first, ForwardIt last, const T& value)</code> -
-		 Umple secvența definită de iteratorii <code>first</code> și <code>last</code> cu valoarea <code>value</code>.</li>
-		
-	<li><code>std::replace(InputIt first, InputIt last, const T& old_value, 
-		const T& new_value)</code> - Înlocuiește toate aparițiile valorii <code>old_value</code> între iteratorii <code>first</code> și <code>last</code> cu <code>new_value</code>.</li>
-		
-	<li><code>std::next_permutation(BidirIt first, BidirIt last)</code> - 
-		Reordonează elementele între iteratorii <code>first</code> și <code>last</code> pentru a obține următoarea permutare lexicografică.</li>
-		
-	<li><code>std::count(InputIt first, InputIt last, const T& value)</code> - 
-		Numără aparițiile valorii <code>value</code> între iteratorii <code>first</code> și <code>last</code>.</li><li><code>std::accumulate(InputIt first, InputIt last, T init)</code> - Agregă valorile între <code>first</code> și <code>last</code>, începând cu valoarea inițială <code>init</code>.</li>
+	
+    <li>std::deque este utilizat pentru gestionarea unei colecții de date în care este 
+        necesară inserarea sau ștergerea rapidă de elemente la ambele capete (în față și în spate).</li>
+    <li>Acesta se declară astfel : <code>deque&lttip_data&gt nume_coadă;</code></li>
 		
 </ul>
 
 <hr>
+<h2>Operații și funcții aplicate pe Deque</h2>
 
-<h1>Probleme în care se poate utiliza <code>&ltvector&gt</code></h1>
+<ul>
+    <li>Deque dispune de iteratori si acces aleator al elementor, spre deosebire de queue.</li>
+    <li><code>nume_coadă.push_back(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.push_front(variabila)</code> Adaugă la începutul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.pop_back()</code> Sterge ultimul element.</li>
+    <li><code>nume_coadă.pop_front()</code> Sterge primul element.</li>
+    <li><code>nume_coadă.front()</code> Furnizează primul element.</li>
+    <li><code>nume_coadă.back()</code> Furninează ultimul element.</li>
+    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.find(first, last, value)</code> Verifică dacă <code>value</code> 
+        există între iteratorii <code>first</code> și <code>last</code>.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
+		dacă coada este goală, altfel <code>false</code>.</li>
+    <li><code>nume_coadă.erase(iterator)</code> Sterge elementul prezent la poziția iteratorului transmis ca parametru.</li>
+    <li>Parcurgerea este identică cu coada normală, la care se adauga parcurgerea prin iteratori.(Aceasta poate fi facută din ambele capete).</li>
+
+
+</ul>
+
+<hr>
+
+<h1>Priority Queue în STL</h1>
+<ul>
+	
+    <li>std::priority_queue este utilizat pentru gestionarea unei colecții de date în care contează ordinea elementelor.
+         Aceasta se bazează pe structura de date Heap.</li>
+    <li>Acesta se declară astfel : <code>priority_queue &lttip_data&gt nume_coadă;</code> sau :</li>
+	<li><code>priority_queue &lttip_data, container_adiacent, functie_comparare&gt nume_coadă;</code></li>
+    <lI>Containerul adiacent este de obicei <code>vector</code> din STL iar functia de comparare poate fi facută de mână.
+        (Eu folosesc in special <code>greater&lttip_data&gt</code>)</li>
+     <li><code>priority_queue &ltint, vector&ltint&gt, greater&ltint&gt&gt q; </code> - Elementele sunt sortate crescător.</li>
+</ul>
+
+<hr>
+
+<h2>Operații și funcții aplicate pe Priority_queue</h2>
+
+<ul>
+    <li><code>nume_coadă.push(variabila)</code> Adaugă în funcție de criteriul de sortare elementul <code>varabila</code> in coadă.</li>
+    <li><code>nume_coadă.top()</code> Furnizează elementul din vârf.(Cel mai din stânga daca reprezentăm liniar).</li>
+    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
+		dacă coada este goală, altfel <code>false</code>.</li>
+    <li>Parcurgerea este identică cu coada normală.</li>
+
+
+</ul>
+
+<hr>
+
+<h1>Unde putem aplica aceste cozi ?</h1>
+
+<ul>
+
+    <li>Algoritmul Fill cu coadă.</li>
+    <li>Algoritmul lui Lee cu coadă.</li>
+    <li>Two Pointers cu coadă.</li>
+    <li>BFS - Breadth First Search.</li>
+    <li>Algoritmul lui Dijkstra.</li>
+    <li>Sliding Window method (De obicei cu deque).</li>
+    <li style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 18px;"><b>Toate cele amintite mai sus vor 
+        fi parcurse in materialul "Algoritmi pentru concurs".</b></li>
+
+</ul>
+
+<hr>
+
+<h1>Probleme în care se poate utiliza <code>&ltqueue&gt</code></h1>
 <ul>
 	<style>
 		a{
 			display : inline-block;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: underline;
             color: black;
 		}
 	</style>
-	<li><a href="https://www.pbinfo.ro/probleme/508/cautare-binara" target="_blank">Cautare Binară</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/661/triunghiuri1" target="_blank">Triunghiuri1</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/3163/secvmaxval" target="_blank">secvmaxval</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/241/interclasare" target="_blank">interclasare</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/3974/irdds" target="_blank">IRDDS</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/categorii/2/tablouri-unidimensionale-vectori" target="_blank">Pbinfo Vectori</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3163/secvmaxval" target="_blank">secvmaxval</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/1839/memory006" target="_blank">Memory006</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/876/coada" target="_blank">Coada</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/880/soarece2" target="_blank">Soarece2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3380/castel2" target="_blank">Castel2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1856/taxe2" target="_blank">Taxe2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1887/dijkstra2" target="_blank">dijkstra2</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/categorii/87/structuri-de-date-liniare-coada" target="_blank">Pbinfo coada</a></li>
 	
 
 </ul>
