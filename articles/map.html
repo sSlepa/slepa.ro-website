@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">STL Map</h1>
+
+<hr>
+
+<h2>Ce este un Map din STL ?</h2>
+<ul>
+<li>Queue-ul din STL este o structură de date liniară de tip FIFO (First In First Out) care permite operația de 
+    introducere de date pe la un capăt si operația de stergere a datelor de la celălalt capăt.</li>
+<li>Acesta se declară astfel : <code>queue&lttip_data&gt nume_coadă;</code></li>
+<li>Este necesară <code>#include &ltqueue&gt</code> pentru a putea utiliza structura de date si metodele sale.</li>
+    
+</ul>
+
+<hr>
+<h2>Operații și funcții aplicate pe Queue</h2>
+<ul>
+
+    <li><code>nume_coadă.push(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.pop()</code> Sterge primul element.</li>
+    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_coadă.front()</code> Furninează valorea din varful cozii.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
+		dacă coada este goală, altfel <code>false</code>.</li>
+
+</ul>
+
+<hr>
+
+<h1>Din păcate, parcurgerea se poate realiza intr-un singur mod : <br></h1>
+	<code>queue&ltint&gt q;<br> 
+			for(int i = 0 ; i < 5 ; ++i)///Pentru a usura adaugam primele 5 numere in vector<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;q.push(i);<br>
+            <br>
+			while(!q.empty()){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << q.front() << ' ';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;q.pop();<br>
+            }<br>
+		</code>
+
+<hr>
+
+<h1>Deque  în STL</h1>
+<ul>
+	
+    <li>std::deque este utilizat pentru gestionarea unei colecții de date în care este 
+        necesară inserarea sau ștergerea rapidă de elemente la ambele capete (în față și în spate).</li>
+    <li>Acesta se declară astfel : <code>deque&lttip_data&gt nume_coadă;</code></li>
+		
+</ul>
+
+<hr>
+<h2>Operații și funcții aplicate pe Deque</h2>
+
+<ul>
+    <li>Deque dispune de iteratori si acces aleator al elementor, spre deosebire de queue.</li>
+    <li><code>nume_coadă.push_back(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.push_front(variabila)</code> Adaugă la începutul cozii variabila introdusă intre paranteze.</li>
+    <li><code>nume_coadă.pop_back()</code> Sterge ultimul element.</li>
+    <li><code>nume_coadă.pop_front()</code> Sterge primul element.</li>
+    <li><code>nume_coadă.front()</code> Furnizează primul element.</li>
+    <li><code>nume_coadă.back()</code> Furninează ultimul element.</li>
+    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.find(first, last, value)</code> Verifică dacă <code>value</code> 
+        există între iteratorii <code>first</code> și <code>last</code>.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
+		dacă coada este goală, altfel <code>false</code>.</li>
+    <li><code>nume_coadă.erase(iterator)</code> Sterge elementul prezent la poziția iteratorului transmis ca parametru.</li>
+    <li>Parcurgerea este identică cu coada normală, la care se adauga parcurgerea prin iteratori.(Aceasta poate fi facută din ambele capete).</li>
+
+
+</ul>
+
+<hr>
+
+<h1>Priority Queue în STL</h1>
+<ul>
+	
+    <li>std::priority_queue este utilizat pentru gestionarea unei colecții de date în care contează ordinea elementelor.
+         Aceasta se bazează pe structura de date Heap.</li>
+    <li>Acesta se declară astfel : <code>priority_queue &lttip_data&gt nume_coadă;</code> sau :</li>
+	<li><code>priority_queue &lttip_data, container_adiacent, functie_comparare&gt nume_coadă;</code></li>
+    <lI>Containerul adiacent este de obicei <code>vector</code> din STL iar functia de comparare poate fi facută de mână.
+        (Eu folosesc in special <code>greater&lttip_data&gt</code>)</li>
+     <li><code>priority_queue &ltint, vector&ltint&gt, greater&ltint&gt&gt q; </code> - Elementele sunt sortate crescător.</li>
+</ul>
+
+<hr>
+
+<h2>Operații și funcții aplicate pe Priority_queue</h2>
+
+<ul>
+    <li><code>nume_coadă.push(variabila)</code> Adaugă în funcție de criteriul de sortare elementul <code>varabila</code> in coadă.</li>
+    <li><code>nume_coadă.top()</code> Furnizează elementul din vârf.(Cel mai din stânga daca reprezentăm liniar).</li>
+    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
+    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
+		dacă coada este goală, altfel <code>false</code>.</li>
+    <li>Parcurgerea este identică cu coada normală.</li>
+
+
+</ul>
+
+<hr>
+
+<h1>Unde putem aplica aceste cozi ?</h1>
+
+<ul>
+
+    <li>Algoritmul Fill cu coadă.</li>
+    <li>Algoritmul lui Lee cu coadă.</li>
+    <li>Two Pointers cu coadă.</li>
+    <li>BFS - Breadth First Search.</li>
+    <li>Algoritmul lui Dijkstra.</li>
+    <li>Sliding Window method (De obicei cu deque).</li>
+    <li style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 18px;"><b>Toate cele amintite mai sus vor 
+        fi parcurse in materialul "Algoritmi pentru concurs".</b></li>
+
+</ul>
+
+<hr>
+
+<h1>Probleme în care se poate utiliza <code>&ltqueue&gt</code></h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 18px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+    <li><a href="https://www.pbinfo.ro/probleme/3163/secvmaxval" target="_blank">secvmaxval</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/1839/memory006" target="_blank">Memory006</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/876/coada" target="_blank">Coada</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/880/soarece2" target="_blank">Soarece2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3380/castel2" target="_blank">Castel2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1856/taxe2" target="_blank">Taxe2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1887/dijkstra2" target="_blank">dijkstra2</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/categorii/87/structuri-de-date-liniare-coada" target="_blank">Pbinfo coada</a></li>
+	
+
+</ul>
+
+</div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
