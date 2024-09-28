@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">STL Stack</h1>
+
+<hr>
+
+<h2>Ce este un Stack din STL ?</h2>
+<ul>
+<li>Stack-ul din STL este o structură de date liniară de tip FILO (First In Last Out) care permite operația de 
+    introducere de date pe la un capăt si operația de stergere a datelor la același capăt.</li>
+<li>Acesta se declară astfel : <code>stack&lttip_data&gt nume_stivă;</code></li>
+<li>Este necesară <code>#include &ltstack&gt</code> pentru a putea utiliza structura de date si metodele sale.</li>
+    
+</ul>
+
+<hr>
+<h2>Operații și funcții aplicate pe Stack</h2>
+<ul>
+
+    <li><code>nume_stivă.push(variabila)</code> Adaugă la finalul stivei variabila introdusă intre paranteze.</li>
+    <li><code>nume_stivă.pop()</code> Sterge ultimul element adăugat(de la final / dreapta daca privim structura liniar).</li>
+    <li><code>nume_stivă.size()</code> Returnează numărul de elemente.</li>
+    <li><code>nume_stivă.top()</code> Furninează valorea din varful stivă.</li>
+    <li><code>nume_stivă.clear()</code> Elimină toate elementele din stivă.</li>
+    <li><code>nume_stivă.empty()</code> Verifică dacă stiva este goală. Returnează <code>true</code> 
+		dacă stiva este goală, altfel <code>false</code>.</li>
+
+</ul>
+
+<hr>
+
+<h1>Din păcate, parcurgerea se poate realiza intr-un singur mod : <br></h1>
+	<code>stack&ltint&gt s;<br> 
+			for(int i = 0 ; i < 5 ; ++i)///Pentru a usura adaugam primele 5 numere in vector<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;s.push(i);<br>
+            <br>
+			while(!s.empty()){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << s.top() << ' ';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;s.pop();<br>
+            }<br>
+		</code>
+
+<hr>
+
+<h1>Unde putem aplica aceste stive ?</h1>
+
+<ul>
+    <li>Problema gestionării vagoanelor de tren.</li>
+    <li>Sortarea topologică.</li>
+    <li>Ajută la găsirea componentelor tari conexe (Algoritmul lui Kosaraju).</li>
+    <li>Analiza amortizată (Nivel de națională).</li>
+    <li>De obicei problemele ce implică stiva sunt grele.</li>
+    <li>Recomand să vă bateți capul cu cele ușore si medii de pe pbinfo pentru a înțelege conceptele de bază iar apoi să consultați materialul 
+        de concurs de pe site și pagina cu <b>Usefull websites</b> unde puteți găsi material suplimentar.</li>
+    <li><a href=" https://www.pbinfo.ro/probleme/categorii/86/structuri-de-date-liniare-stiva" target="_blank" 
+        style="color: black;">Pbinfo stivă</a></li>
+       
+
+</ul>
+
+</div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
