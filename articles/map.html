@@ -53,25 +53,33 @@
 
 <h2>Ce este un Map din STL ?</h2>
 <ul>
-<li>Queue-ul din STL este o structură de date liniară de tip FIFO (First In First Out) care permite operația de 
-    introducere de date pe la un capăt si operația de stergere a datelor de la celălalt capăt.</li>
-<li>Acesta se declară astfel : <code>queue&lttip_data&gt nume_coadă;</code></li>
-<li>Este necesară <code>#include &ltqueue&gt</code> pentru a putea utiliza structura de date si metodele sale.</li>
+<li>În C++ Standard Template Library (STL), containerul <code>std::map</code> este un tip de structură de date asociativă 
+    ce permite stocarea perechilor cheie-valoare. Fiecare cheie este unică, iar valorile asociate acestor 
+    chei pot fi accesate, adăugate sau modificate rapid. Elementele dintr-un std::map sunt stocate ordonat, 
+    conform ordinii definite de chei, care utilizează, implicit, operatorul <code>operator&lt</code> pentru a compara elementele.
+     std::map este implementat folosind o structură de arbore binar echilibrat (de obicei, un arbore AVL sau Red-Black), 
+     ceea ce asigură că operațiile de inserare, ștergere și căutare au complexitate logaritmică O(log n). </li>
+<li>Acesta se declară astfel : <code>map&lttip_data,tip_data&gt nume_map;</code></li>
+<li>Este necesară <code>#include &ltmap&gt</code> pentru a putea utiliza structura de date si metodele sale.</li>
     
 </ul>
 
 <hr>
-<h2>Operații și funcții aplicate pe Queue</h2>
+<h2>Operații și funcții aplicate pe Map</h2>
 <ul>
 
-    <li><code>nume_coadă.push(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
-    <li><code>nume_coadă.pop()</code> Sterge primul element.</li>
-    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
-    <li><code>nume_coadă.front()</code> Furninează valorea din varful cozii.</li>
-    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
-    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
-		dacă coada este goală, altfel <code>false</code>.</li>
-
+    <li><code>nume_map[nume_tip_data_1] = nume_tip_data_2</code> Atribuie la cheia cu identificatorul <code>nume_tip_data_1(cheia)</code>
+    variabila <code>nume_tip_data_2(valoarea)</code> (Relație cheie-valoare).</li>
+    <li><code>nume_map.erase(nume_cheie)</code> Șterge perechea cheie-valoara.</li>
+    <li><code>nume_map.find(nume_cheie)</code> Caută perechea cheie-valoare dupa cheia transmisă ca parametru : <br>
+    <code>auto it = nume_map.find(nume_cheie);<br>
+        if(it != nume_map.end()){ /// Daca este egal cu iteratorul <code>end</code> atunci se află in afara structurii.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cout << "Cheia există și valoarea este: " << it->second; 
+            /// Afisăm valoarea corespunzatoare cheii<br> 
+        }<br>
+        </code></li>
+    <li><code>nume_map.size()</code> Returnează dimensiunea structurii de date(In principiu, numărul de perechi cheie-valoare atribuite).</li>
+    <li><code></code></li>
 </ul>
 
 <hr>
