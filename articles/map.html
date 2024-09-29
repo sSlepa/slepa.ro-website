@@ -79,106 +79,77 @@
         }<br>
         </code></li>
     <li><code>nume_map.size()</code> Returnează dimensiunea structurii de date(In principiu, numărul de perechi cheie-valoare atribuite).</li>
-    <li><code></code></li>
+    <li><code>nume_map.empty()</code> Returnează dacă structura de date este goală sau nu.</li>
 </ul>
 
 <hr>
 
-<h1>Din păcate, parcurgerea se poate realiza intr-un singur mod : <br></h1>
-	<code>queue&ltint&gt q;<br> 
-			for(int i = 0 ; i < 5 ; ++i)///Pentru a usura adaugam primele 5 numere in vector<br> 
-			&nbsp;&nbsp;&nbsp;&nbsp;q.push(i);<br>
+<h1>Metode de parcurgere : <br></h1>
+<h2 style="color: #a846b9;font-size: 16px;">1) Cu iterator :<br></h2>
+	<code>map&ltint,int&gt m;<br> 
+			for(int i = 0 ; i < 5 ; ++i)<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;m[i] = i + 1; // Atribuim i + 1 la i.<br>
             <br>
-			while(!q.empty()){<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;cout << q.front() << ' ';<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;q.pop();<br>
+			for(map&ltint,int&gt::iterator it = m.begin() ; it != m.end() ; ++it){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << it->first << ' ' << it->second << '\n';<br>
             }<br>
 		</code>
+<h2 style="color: #a846b9;font-size: 16px;">2) Folosind cuvântul cheie "auto" care preia tipul de date automat :<br></h2>
+<code>for(auto it : m){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cout << it.first << ' ' << it.second << '\n';<br>
+    }<br>
+</code>
 
 <hr>
 
-<h1>Deque  în STL</h1>
+<h1>Unordered_map în STL</h1>
 <ul>
 	
-    <li>std::deque este utilizat pentru gestionarea unei colecții de date în care este 
-        necesară inserarea sau ștergerea rapidă de elemente la ambele capete (în față și în spate).</li>
-    <li>Acesta se declară astfel : <code>deque&lttip_data&gt nume_coadă;</code></li>
+    <li>În C++ Standard Template Library (STL), std::unordered_map este un container asociativ care, 
+        la fel ca std::map, stochează date sub formă de perechi cheie-valoare. 
+        Diferența majoră este că unordered_map nu menține o ordine între elemente. 
+        Acesta folosește o tabelă hash pentru a asocia cheile cu valorile, 
+        oferind astfel o performanță constantă O(1) pentru operațiile de acces, inserare și ștergere în majoritatea cazurilor.</li>
+    <li>Avem nevoie de librăria <code>&ltunordered_map&gt</code>.</li>
+    <li>Acesta se declară astfel : <code>unordered_map&lttip_data,tip_data&gt nume_map;</code></li>
 		
 </ul>
 
 <hr>
-<h2>Operații și funcții aplicate pe Deque</h2>
+<h2>Diferențe între map și unordered_map</h2>
 
 <ul>
-    <li>Deque dispune de iteratori si acces aleator al elementor, spre deosebire de queue.</li>
-    <li><code>nume_coadă.push_back(variabila)</code> Adaugă la finalul cozii variabila introdusă intre paranteze.</li>
-    <li><code>nume_coadă.push_front(variabila)</code> Adaugă la începutul cozii variabila introdusă intre paranteze.</li>
-    <li><code>nume_coadă.pop_back()</code> Sterge ultimul element.</li>
-    <li><code>nume_coadă.pop_front()</code> Sterge primul element.</li>
-    <li><code>nume_coadă.front()</code> Furnizează primul element.</li>
-    <li><code>nume_coadă.back()</code> Furninează ultimul element.</li>
-    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
-    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
-    <li><code>nume_coadă.find(first, last, value)</code> Verifică dacă <code>value</code> 
-        există între iteratorii <code>first</code> și <code>last</code>.</li>
-    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
-		dacă coada este goală, altfel <code>false</code>.</li>
-    <li><code>nume_coadă.erase(iterator)</code> Sterge elementul prezent la poziția iteratorului transmis ca parametru.</li>
-    <li>Parcurgerea este identică cu coada normală, la care se adauga parcurgerea prin iteratori.(Aceasta poate fi facută din ambele capete).</li>
-
+    <li>Funcțiile sunt identice.</li>
+    <li>Map menține elementele ordonate în funcție de cheie, în timp ce unordered_map nu menține nicio ordine.</li>
+    <li>Operațiile pe map au complexitate O(log n), 
+        în timp ce operațiile pe unordered_map au complexitate medie O(1), 
+        dar pot ajunge la O(n) în cazul coliziunilor frecvente în tabela hash.</li>
+    <li>Map este util atunci când ai nevoie de acces rapid la date într-o ordine specifică, 
+        iar unordered_map este preferat atunci când ordinea nu este importantă, dar viteza este esențială.</li>
+    <li>Nu putem utiliza perechile(pair) atât de ușor pe unordered_map.</li>
 
 </ul>
 
 <hr>
 
-<h1>Priority Queue în STL</h1>
-<ul>
-	
-    <li>std::priority_queue este utilizat pentru gestionarea unei colecții de date în care contează ordinea elementelor.
-         Aceasta se bazează pe structura de date Heap.</li>
-    <li>Acesta se declară astfel : <code>priority_queue &lttip_data&gt nume_coadă;</code> sau :</li>
-	<li><code>priority_queue &lttip_data, container_adiacent, functie_comparare&gt nume_coadă;</code></li>
-    <lI>Containerul adiacent este de obicei <code>vector</code> din STL iar functia de comparare poate fi facută de mână.
-        (Eu folosesc in special <code>greater&lttip_data&gt</code>)</li>
-     <li><code>priority_queue &ltint, vector&ltint&gt, greater&ltint&gt&gt q; </code> - Elementele sunt sortate crescător.</li>
-</ul>
+<h2>Cum utilizăm pair cu unordered_map ?</h2>
+<code>struct hash_pair{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;template &ltclass T1, class T2&gt<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;size_t operator()(const pair<T1, T2> &p) const{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto hash1 = hash<T1>{}(p.fi);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto hash2 = hash<T2>{}(p.se);<br><br>
+ 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(hash1 != hash2)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return hash1 ^ hash2;<br><br>
+       
+                    &nbsp;&nbsp;&nbsp;&nbsp;return hash1;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+};<br>
+    unordered_map&ltpair&tlint,int&gt,int,hash_pair&gt nume_map_cu_pairs;</code>
 
 <hr>
 
-<h2>Operații și funcții aplicate pe Priority_queue</h2>
-
-<ul>
-    <li><code>nume_coadă.push(variabila)</code> Adaugă în funcție de criteriul de sortare elementul <code>varabila</code> in coadă.</li>
-    <li><code>nume_coadă.top()</code> Furnizează elementul din vârf.(Cel mai din stânga daca reprezentăm liniar).</li>
-    <li><code>nume_coadă.size()</code> Returnează numărul de elemente.</li>
-    <li><code>nume_coadă.clear()</code> Elimină toate elementele din coadă.</li>
-    <li><code>nume_coadă.empty()</code> Verifică dacă coada este goală. Returnează <code>true</code> 
-		dacă coada este goală, altfel <code>false</code>.</li>
-    <li>Parcurgerea este identică cu coada normală.</li>
-
-
-</ul>
-
-<hr>
-
-<h1>Unde putem aplica aceste cozi ?</h1>
-
-<ul>
-
-    <li>Algoritmul Fill cu coadă.</li>
-    <li>Algoritmul lui Lee cu coadă.</li>
-    <li>Two Pointers cu coadă.</li>
-    <li>BFS - Breadth First Search.</li>
-    <li>Algoritmul lui Dijkstra.</li>
-    <li>Sliding Window method (De obicei cu deque).</li>
-    <li style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 18px;"><b>Toate cele amintite mai sus vor 
-        fi parcurse in materialul "Algoritmi pentru concurs".</b></li>
-
-</ul>
-
-<hr>
-
-<h1>Probleme în care se poate utiliza <code>&ltqueue&gt</code></h1>
+<h1>Probleme în care se poate utiliza <code>&ltmap&gt</code> și <code>&ltunordered_map&gt</code></h1>
 <ul>
 	<style>
 		a{
@@ -188,15 +159,15 @@
             color: black;
 		}
 	</style>
-    <li><a href="https://www.pbinfo.ro/probleme/3163/secvmaxval" target="_blank">secvmaxval</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/1839/memory006" target="_blank">Memory006</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/876/coada" target="_blank">Coada</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/880/soarece2" target="_blank">Soarece2</a></li>
-    <li><a href="https://www.pbinfo.ro/probleme/3380/castel2" target="_blank">Castel2</a></li>
-    <li><a href="https://www.pbinfo.ro/probleme/1856/taxe2" target="_blank">Taxe2</a></li>
-    <li><a href="https://www.pbinfo.ro/probleme/1887/dijkstra2" target="_blank">dijkstra2</a></li>
-	<li><a href="https://www.pbinfo.ro/probleme/categorii/87/structuri-de-date-liniare-coada" target="_blank">Pbinfo coada</a></li>
-	
+    <li><a href="https://www.pbinfo.ro/probleme/4267/perechipuncte" target="_blank">Perechi de puncte</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/2217/map" target="_blank">Map</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/4205/secvsums" target="_blank">SecvsumS</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/3798/nrminmaxap" target="_blank">nrminmaxap</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/2628/h2" target="_blank">H2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/2631/h4" target="_blank">H4</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3626/min-len-subseq" target="_blank">min-len-subseq</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/2225/complementar" target="_blank">complementar</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3631/sum-unice" target="_blank">sum-unice</a></li>
 
 </ul>
 
