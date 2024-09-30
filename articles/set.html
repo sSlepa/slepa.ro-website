@@ -53,13 +53,84 @@
 
 <h2>Ce este un Set din STL ?</h2>
 <ul>
-<li>În C++ Standard Template Library (STL), <code>set</code> este un container asociativ care stochează 
+<li>În C++, <code>set</code> este un container asociativ care stochează 
     elementele într-o ordine sortată și fără duplicate. Fiecare element este unic, iar containerul 
     menține ordinea elementelor utilizând o structură de arbore binar echilibrat (de obicei, un arbore Red-Black). 
     Datorită acestei structuri, operațiile de căutare, inserare și ștergere se realizează în timp logaritmic O(log n).
 <li>Acesta se declară astfel : <code>set&lttip_data&gt nume_set;</code></li>
 <li>Este necesară <code>#include &ltset&gt</code> pentru a putea utiliza structura de date si metodele sale.</li>
-    
+
+</ul>
+
+<hr>
+<h2>Operații și funcții aplicate pe Set</h2>
+<ul>
+
+    <li><code>nume_set.insert()</code> Introduce in set o valoare.</li>
+    <li><code>nume_set.erase()</code> Șterge un element.</li>
+    <li><code>nume_set.find()</code> Caută un element : <br>
+    <code>auto it = nume_set.find(element);<br>
+        if(it != nume_set.end()){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cout << *it;
+            /// Afisăm valoarea corespunzatoare<br> 
+        }<br>
+        </code></li>
+    <li><code>nume_set.size()</code> Returnează dimensiunea structurii de date.</li>
+    <li><code>nume_set.empty()</code> Returnează dacă structura de date este goală sau nu.</li>
+</ul>
+
+<hr>
+
+<h1>Metode de parcurgere : <br></h1>
+<h2 style="color: #a846b9;font-size: 16px;">1) Cu iterator :<br></h2>
+	<code>set&ltint&gt s;<br> 
+			for(int i = 0 ; i < 5 ; ++i)<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;s.insert(i); // Atribuim i + 1 la i.<br>
+            <br>
+			for(set&ltint&gt::iterator it = s.begin() ; it != s.end() ; ++it){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;cout << it->first << '\n';<br>
+            }<br>
+		</code>
+<h2 style="color: #a846b9;font-size: 16px;">2) Folosind cuvântul cheie "auto" care preia tipul de date automat :<br></h2>
+<code>for(auto it : s){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cout << it.first << '\n';<br>
+    }<br>
+</code>
+
+<h1>Multiset în STL</h1>
+<ul>
+	
+    <li>În C++ Standard Template Library (STL), std::multiset este un container asociativ care, similar cu std::set, 
+		stochează elementele într-o ordine sortată, dar, spre deosebire de set, permite duplicate. Într-un multiset, 
+		mai multe instanțe ale aceluiași element pot fi inserate și menținute, fără a fi nevoie de o unicitate a elementelor.
+		 Acest container este util în scenariile în care avem nevoie de o colecție ordonată de date, dar dorim să păstrăm toate 
+		 instanțele elementelor.</li>
+    <li>Acesta se declară astfel : <code>multiset&lttip_data&gt nume_set;</code></li>
+	<li>Funcțiile sunt identice cu <code>set</code> dar se mai adaugă <code>count</code> pentru a număra frecvența unui element.</li>
+		
+</ul>
+
+<hr>
+
+<h1>Probleme în care se poate utiliza <code>&ltset&gt</code> și <code>&ltmultiset&gt</code></h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 18px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+    <li><a href="https://www.pbinfo.ro/probleme/2218/set" target="_blank">Set</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/3502/hard-prime" target="_blank">hard-prime</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/2224/mset" target="_blank">mset</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/3959/maxsecvk" target="_blank">maxsecvk</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3699/third" target="_blank">third</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/4433/kth1" target="_blank">kth1</a></li>
+    <li>Majoritatea problemelor vor fi explicate în <a href="#">Arhiva personala</a> sau puteți consulta 
+		<a href="https://solinfo.ro">solinfo.ro </a> pentru codurile sursă la probleme.</li>
+
 </ul>
 
 </div>
