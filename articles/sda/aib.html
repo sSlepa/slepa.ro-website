@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">Arbori Indexați Binar</h1>
+
+<hr>
+
+<h2>Ce sunt Arborii indexati binar ?</h2>
+<ul>
+<li>Arborii indexați binar sunt structuri de date eficiente, pe care se pot aplica operații de update si query de diferite tipuri, 
+    cele mai de bază fiind marcarea unui element si suma unui subinterval, aceasta realizandu-se în O(log<sub>2</sub>n)</li>
+<li>Sunt o alternativă mult mai bună a vectorilor normali deoarece oferă soluții mult mai eficiente.</li>
+<li>Ocupă același număr de spații cu un vector normal, adică memorie O(n), spre deosebire de Arborii de Intervale unde este 
+    indicată folosirea a cel puțin O(4 &#x2022; n) spații de memorie.</li>
+<li>Cu toate acestea, arborii de intervale pot fi folosiți în mai multe situații, fiind mai flexibili.</li>
+<li>AIB-urile funcționează prin manipularea celui mai nesemnificativ bit (LSB). 
+    Adică parcurgerile și interogările au loc prin marcarea / demarcarea acelui bit.</li>
+<li>Recomand acest <code>define</code> pentru a ușura scrierea : <code>#define lsb(i) (i & -i)</code></li>
+    
+</ul>
+<h1>Cum parcurgem ? <br></h1>
+<h2 style="color: #a846b9;font-size: 16px;">Funcția aceasta marchează elementul <code>p</code> pe intervalul [p,n]:<br></h2>
+		<code>void update(int p){<br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;for(int i = p ; i &lt= n ; i += lsb(i))<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aib[i]++;<br>
+        
+        }</code><br>
+
+<h2 style="color: #a846b9;font-size: 16px;">Funcția aceasta returnează numărul de numere marcate pe intervalul [0,p] :<br></h2>
+		<code>int query(int p){<br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;int sum = 0;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for(int i = p ; i ; i -= lbs(i)) ///Mergem invers. <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += aib[i];<br>
+        
+            &nbsp;&nbsp;&nbsp;&nbsp;return sum;<br>
+        }</code>
+
+<h2>Cu aceste 2 funcții am rezolvat problema <a href="https://www.pbinfo.ro/probleme/2725/aib" 
+    target="_blank" style="color: black;">AIB</a> de pe pbinfo. Felicitări !</h1>
+<hr>
+
+<h1>Optimizare a implementării când limita superioară de memorie a problemei este mult prea mare.</h1>
+<ul>
+
+<li>Exemplu : Valoriile de intrare sunt pâna la 2<sup>31</sup> -1 dar avem doar 100000 de elemente în input.</li>
+<li>Putem normaliza șirul, adică să pastrăm ordinea elementelor dar acestea sa fie incadrate intre [1,10<sup>5</sup>]</li>
+<li>Șirul : <code>[210000, 230000, 800000, 500000, 620000, 300000]</code> se poate transforma foarte ușor în : 
+<code>[1, 2, 6, 4, 5, 3]</code> iar astfel putem utiliza un AIB.</li>
+<li>Acest proces se numește <b>normalizare</b> și se poate implementa astfel : <br>
+    <code>
+        int a[100005];<br>
+        vector&ltint&gt vals;<br>
+        cin >> n;<br>
+        for(int i = 1 ; i &lt= n ; ++i){<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cin >> a[i];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;vals.push_back(a[i]);<br>
+        } <br>
+    
+        sort(vals.begin(), vals.end());<br>
+        vals.erase(unique(vals.begin(), vals.end()), vals.end());<br>
+    
+        for(int i = 1 ; i &lt= n ; ++i) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;a[i] = upper_bound(vals.begin(), vals.end(), a[i]) - vals.begin();<br></code>
+
+</li>
+<li>În vectorul <code>a</code> reținem șirul normalizat iar în <code>vals</code> valorile inițiale deoarece este posibil
+    (în probleme mai complexe) să avem nevoie de ele.</li>
+
+</ul>
+
+
+
+</div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
