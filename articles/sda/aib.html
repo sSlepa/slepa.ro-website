@@ -47,7 +47,7 @@
 	</nav>
 
 	<div class = "content">
-	<h1 style="margin-top: 5px;">Arbori Indexați Binar</h1>
+	<h1 style="margin-top: 5px;">Arbori Indexați Binar(Fenwick Tree)</h1>
 
 <hr>
 
@@ -116,7 +116,57 @@
 
 </ul>
 
+<hr>
 
+<h1>Numărul de inversiuni într-o permutare cu AIB - 
+    <a href="https://www.pbinfo.ro/probleme/3206/nrinversiuni" target="_blank" style="color: black;"><h1>nrinversiuni</h1></a></h1>
+
+<ul>
+<li>Varianta naivă a problemei are complexitate O(n<sup>2</sup>) iar aceasta nu convine pentru o rezolvare eficientă.</li>
+<li>Exiștă o alternativă, folosind AIB-uri. Practic vom marca elementul curent dupa ce vom apela functia <code>query</code>.
+Rezultatul îl vom găsi în diferența de <code>query-uri</code> : rez += query(n) - query(elem_curent).</li>
+<li>De ce functionează? Pentru că adunăm la sumă câte elemente din șir au fost marcate până la pasul curent iar apoi scadem 
+    numărul celor marcate din intervalul [1,elem_curent].</li>
+<li>Basically, rămânem doar cu cele din [elem_curent + 1, n], adică fix elementele ce satisfac proprietatea
+     ca se află la stânga si sunt mai mari(Adică au fost marcate pâna la pasul curent).</li>
+<li>Implementarea algoritmului din funcția <code>main()</code> (Funcțiile de update si query sunt identice cu cele anterioare) :
+    <br>
+    <code>long long rez = 0;<br>
+    for(int i = 1 ; i &lt= n ; ++i){ <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cin >> x;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;rez += query(n) - query(x);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;update(x);<br>
+    }<br>
+
+    cout << rez;</code></li>
+
+</ul>
+
+<hr>
+
+<h1>Probleme în care se pot utiliza <code>Arbori indexati binar</code>.</h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 18px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+    
+    <li><a href="https://www.pbinfo.ro/probleme/2725/aib" target="_blank">AIB</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/4688/nrseq" target="_blank">nrseq</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/4203/numberofpoints" target="_blank">numberofpoints</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/2012/tsm" target="_blank">TSM</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3712/median-query" target="_blank">median-query</a></li>
+    <li><a href="https://cses.fi/problemset/task/1734" target="_blank">Distinct Values Queries (cses)</a></li>
+    <li style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 18px;"><b>În general problemele 
+        sunt de o dificultate foarte ridicată. Voi încerca în <a href="../archive.html" target="_blank">Arhiva personală</a> 
+        și în <a href="../concursuri.html" target="_blank">Algoritmi pentru concursuri</a> să explic cât mai multe din ele.</b></li>
+	
+
+</ul>
 
 </div>
 
