@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">Arbori red-black</h1>
+
+<hr>
+
+<h2>Ce sunt Arborii red-black ?</h2>
+<ul>
+<li>Arborii red-black sunt arbori binari de căutare care mai conțin o informație suplimentară, aceea fiind culoarea.</li>
+<li>Prin restrângerea modului în care se colorează nodurile pe orice drum de la rădăcină la o frunză, arborii red-black
+    garantează că nici un astfel de drum nu este mai lung decât dublul lungimii oricărui alt drum,
+    deci că arborele este aproximativ echilibrat.</li>
+<li>Fiecare nod este fie roşu, fie negru</li>
+<li>Fiecare frunză (nil) este neagră</li>
+<li>Dacă un nod este roşu, atunci ambii fii ai săi sunt negri</li>
+<li>Fiecare drum simplu de la un nod la un descendent care este frunză conţine acelaşi număr
+    de noduri negre.</li>
+<li>Radăcina este tot timpul neagră.</li>
+
+<img src="C:\!c++main\WebSite\poze\redblack.png" alt="arbore_red_black">
+<li>Poză din <b>"Introduction to Algorithms" by Thomas H. Cormen</b></li>
+
+</ul>
+
+<hr>
+<h1>Rotații pe arborii red-black</h1>
+<li>Deoarece operațiile de insert și delete pot strica structura arborelui, acesta se repară prin <b>rotații</b>.</li>
+<li>Rotația la stânga / dreapta : </li>
+<img src="C:\!c++main\WebSite\poze\rotatii_red-black.png" alt="rotatii_red_black">
+<li>Implementare pentru <code>RotateLeft</code> : 
+    <code></code>
+</li>
+
+</div>
+
+<hr>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
