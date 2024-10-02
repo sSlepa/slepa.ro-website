@@ -74,10 +74,34 @@
 <li>Deoarece operațiile de insert și delete pot strica structura arborelui, acesta se repară prin <b>rotații</b>.</li>
 <li>Rotația la stânga / dreapta : </li>
 <img src="C:\!c++main\WebSite\poze\rotatii_red-black.png" alt="rotatii_red_black">
-<li>Implementare pentru <code>RotateLeft</code> : 
-    <code></code>
+<li>Implementare pentru <code>RotateLeft</code> : <br>
+    <code>void RotateLeft(Node*& root, Node*& x){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Node* y = x->right;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;x->right = y->left;<br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;if(y->left != nullptr) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y->left->parent = x; <br><br>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;y->parent = x->parent; <br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;if(x->parent == nullptr) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root = y; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else if(x == x->parent->left) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x->parent->left = y; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x->parent->right = y; <br>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;y->left = x;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;x->parent = y;<br>
+
+    }</code>
 </li>
 
+<hr>
+
+<h1>Operația de insert</h1>
+<li>Vom face inserarea obișnuită, ca pe un Binary Search Tree normal iar apoi vom colora nodul <b style="color: red;">roșu</b>.</li>
+<li></li>
 </div>
 
 <hr>

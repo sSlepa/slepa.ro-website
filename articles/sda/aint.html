@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">Arbori de intervale</h1>
+
+<hr>
+
+<h2>Ce sunt Arborii de intervale ?</h2>
+<ul>
+<li>Arborii de intervale sunt o structură de date în care fiecare nod al acesteia reprezintă un interval din array-ul 
+    pe care se efectuează operațiile de <code>query</code> și <code>update</code>.</li>
+<li>Această structură de date este foarte flexibilă și totodată foarte rapidă, permițând astfel rezolvarea unor task-uri grele.</li>
+<li>Dezavantajele principale ar fi codul foarte lung care trebuie scris și faptul ca ocupă memorie O(4 &#x2022; n). </li>
+<li>Nodurile frunză reprezintă elementele de sine stătătoare deoarece intervalul are lungime 1 în acel nod.</li><br>
+
+<img src="C:\!c++main\WebSite\poze\aint.png" alt="aint">
+<li>Poză de pe <a href="https://solinfo.ro/blog/structuri-de-date-arborescente-arbori-de-intervale/" 
+    target="_blank" style="color: black;">solinfo.ro</a> - Mulțumesc Alex si Theodor</li>
+
+</ul>
+
+<hr>
+
+<h1>Problema minimului pe interval cu update-uri</h1>
+<ul>
+<li>Propun, pentru o întelegere mai usoară a acestui material, 
+    să încep cu rezolvarea problemei, explicarea acesteia si prezentarea codului sursă.</li>
+<li>Problema propusă : <a href="https://www.pbinfo.ro/probleme/2090/actualizare-element-minim-interval" 
+    target="_blank" style="color: black;"> Actualizare Element Minim Interval</a></li>
+<li>Vom avea nevoie de funcțiile : buildTree, Update și Query.</li>
+<code style="color: green;">#define Inf 0x3f3f3f3f </code><br>
+    <code>
+        int a[100005];<br>
+        int aint[400005];<br>
+        void buildTree(int node,int st,int dr){<br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;if(st == dr){ <code style="color: gray;">
+        /// Suntem intr-un nod frunză (adică elementul din array), deci asignam fix valoarea respectivă.</code><br> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aint[node] = a[st];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;int mij = (st + dr) / 2; <code style="color: gray;">/// Ne împățim pe 2 ramuri.</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;buildTree(2 * node, st , mij); <code style="color: gray;">/// Subarborele stâng.</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;buildTree(2 * node + 1, mij + 1 , dr); <code style="color: gray;">/// Subarborele drept.</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;aint[node] = min(aint[2 * node], aint[2 * node + 1]); 
+        <code style="color: gray;">
+        /// Când revenim din recursie,calculăm minimul din reuniunea celor 2 fii pentru fiecare nod ce nu este frunză. </code><br>
+
+}</code><br>
+
+<code>int query(int node,int st,int dr,int left,int right){<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;if(st &gt right || dr &lt left) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Inf;
+    <code style="color: gray;">/// Returnăm o valoarea foarte mare dacă nu suntem în intervalul bun</code> <br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;if(st >= left && dr &lt= right)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return aint[node]; 
+    <code style="color: gray;">/// Intervalul se suprapune la fix sau se află în interiorul lui [left,right]</code><br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;int mij = (st + dr) / 2; <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;int val_st = query(2 * node, st, mij, left, right); <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;int val_dr = query(2 * node + 1, mij + 1, dr, left, right); <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return min(val_st,val_dr); <code style="color: gray;">/// Returnăm minimul dintre cei 2 subarbori.</code><br>
+
+}</code>
+
+<br>
+
+<code>void Update(int node,int st,int dr,int pos){<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;if(st == dr){<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aint[node] = a[pos]; <code style="color: gray;">///Elementul de la poziția pos a fost schimbat.</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;int mij = (st + dr) / 2;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;if(pos &lt= mid) <code style="color: gray;">/// Verificăm pe care subarbore coborâm.</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update(2 * node, st, mij, pos);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update(2 * node + 1, mij + 1, dr, pos);<br>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;aint[node] = min(aint[2 * node], aint[2 * node + 1]); 
+        <code style="color: gray;">/// Repetăm operația de menținere a minimului pe fiecare interval.</code><br>
+    } <code style="color: gray;">///Funcția main() rămâne exercițiu pentru cititor.</code>
+</code> 
+
+</ul>
+
+<hr>
+
+<h1>Query : Returnează, apoi șterge elementul prezent la poziția <code style="color: red;">k</code></h1>
+
+<ul>
+<li>La prima vedere, poate părea o problemă banală ce poate fi rezolvată cu un simplu vector, nu ?</li>
+<li>Nu este chiar așa, asta în momentul în care numărul de elemente nu permite o rezolvare în O(n<sup>2</sup>).</li>
+<li>O alternativă folosește tehnica <code style="color: red;">k-th zero</code> aplicată pe arbori de intervale.</li>
+<li>Basically, ce facem, reținem arborele sub formă de <code>pair&ltint,int&gt</code> (sau mai declarăm încă o structură de date) 
+    iar poziția <code>first</code> din pereche reține valoarea elementului iar <code>second</code>
+    reține numărul de elemente prezente în intervalul corespunzător.</li>
+<li>O implementare pentru algoritmul descris mai sus : <br>
+    <code>pair&ltint,int> aint[800005];<br>
+        int kth(int nod,int st,int dr,int pos){ <br>
+ 
+        &nbsp;&nbsp;&nbsp;&nbsp;if(st == dr){ <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int aux = aint[nod].first; <code style="color: gray;">///Salvăm elementul de pe poziția pos.</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aint[nod].second = 0; <code style="color: gray;">/// Scădem cu 1 numărul de elemente din șir (Simulăm stergerea).</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aint[nod].first = -Inf; <code style="color: gray;">///"Ștergem" (fictiv) valorile din vector si arbore.</code><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return aux; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;int mij = (st + dr) / 2; <br>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;int rez = 0;<br>
+     
+        &nbsp;&nbsp;&nbsp;&nbsp;if(aint[nod * 2].second >= pos)
+        <code style="color: gray;">///Coborâm pe stânga daca poziția cautată se află în intervalul [1, aint[nod * 2].second].</code><br> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rez = kth(nod * 2,st,mij,pos);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rez = kth(nod * 2 + 1,mij + 1,dr, pos - aint[nod * 2].second);
+        <code style="color: gray;">Altfel, mergem pe dreapta si scădem din pos câte elemente avem in stânga deoarece "sărim" peste 
+            ele iar subarborele drept nu mai are in sumă atâtea elemente.</code><br>
+     
+        &nbsp;&nbsp;&nbsp;&nbsp;aint[nod].second = aint[nod * 2].second + aint[nod * 2 + 1].second;<br>
+     
+        &nbsp;&nbsp;&nbsp;&nbsp;return rez;<br>
+    }
+    </code>
+</li>
+
+</ul>
+
+<hr>
+
+<h1>Aspecte importante</h1>
+
+<ul>
+<li>Această problemă prezentată este una dintre cele mai simple. Structura suportă operații mult mai complexe.</li>
+<li>Putem face update pe range, nu pe element. Aici intervine <b>lazy updates</b> pentru a efectua eficient update-urile.</li>
+<li>Nodul poate reține mai multe câmpuri iar operația dintre fii poate consta în <code style="color: blueviolet;">adunare, maxim, cmmdc, bitwise operations, 
+        interclasare de sub-vetori, etc.</code></li>
+<li style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 18px;"><b>În general problemele 
+        sunt de o dificultate foarte ridicată. Voi încerca în <a href="../archive.html" target="_blank">Arhiva personală</a> 
+        și în <a href="../concursuri.html" target="_blank">Algoritmi pentru concursuri</a> să explic cât mai multe din ele.</b></li>
+        
+
+</ul>
+
+<hr>
+
+<h1>Probleme în care se pot utiliza <code>Arbori de intervale</code>.</h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 18px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+    
+    <li><a href="https://www.pbinfo.ro/probleme/2094/actualizare-element-cmmdc-interval" target="_blank">actualizare-element-cmmdc-interval</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/4019/pikachu" target="_blank">pikachu</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/1794/aint" target="_blank">aint</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/3225/simple" target="_blank">simple</a></li>
+	<li><a href="https://cses.fi/problemset/task/1648/" target="_blank">Dynamic Range Sum Queries</a></li>
+    <li><a href="https://cses.fi/problemset/task/1650/" target="_blank">Range Xor Queries</a></li>
+    <li><a href="https://cses.fi/problemset/task/1651/" target="_blank">Range Update Queries</a></li>
+    <li><a href="https://cses.fi/problemset/task/1143" target="_blank">Hotel Queries</a></li>
+    <li><a href="https://cses.fi/problemset/task/1749/" target="_blank">List Removals</a> - Verifică k-th zero din articol.</li>
+    <li><a href="https://cses.fi/problemset/task/1143" target="_blank">Hotel Queries</a></li>
+
+</ul>
+
+<hr>
+
+</div>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
