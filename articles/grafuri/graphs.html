@@ -109,13 +109,14 @@
 <hr>
 
 <h1>DFS - Parcurgere în adâncime</h1>
+<ul>
 <li>DFS este o tehnică, de obicei implementată recursiv, ce continua parcurgerea grafului în adâncime până în momentul 
 	în care sunt marcate toate nodurile. </li>
 <li>Operațiunea este reluată de fiecare dată când algoritmul revine din recursivitate, până marcăm toate nodurile posibile.</li>
 <li>O implementare : 
 	<code>
 		///Presupunem că avem graful citit. <br>
-		vector&int> G[100005];<br>
+		vector&ltint> G[100005];<br>
 		int vizitat[100005];<br>
 		void dfs(int nod){<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;vizitat[nod] = 1; <code style="color: gray;">/// Marcăm ca vizitat pentru a nu intra in infinite loop</code><br>
@@ -126,11 +127,38 @@
 		}<br>
 
 	</code></li>
+</ul>
 
 <hr>
 
 <h1>BFS - Parcurgere în lățime</h1>
-<li></li>
+<ul>
+	<li>BFS este o tehnică, de obicei implementată cu un <b>Queue</b>, 
+		ce vizitează toți vecinii nodului curent adaugându-i în coadă pe toți.</li>
+	<li>Operațiunea se oprește când coada rămâne goală.</li>
+	<li>O implementare : 
+		<code>
+			///Presupunem că avem graful citit. <br>
+			vector&ltint> G[100005];<br>
+			int vizitat[100005];<br>
+			void bfs(int nod){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;vizitat[nod] = 1; 
+				<code style="color: gray;">/// Marcăm ca vizitat pentru a nu intra in infinite loop</code><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;queue&ltint> q;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;q.push(nod);<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;while(!q.empty()){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int x = q.front();<code style="color: gray;">///Extragem nodul curent din coada</code><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.pop();<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(auto i : G[x]) <code style="color: gray;">///Iterăm prin nodurile cu care este legat X</code><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(vizitat[i] == 0){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vizitat[i] = 1;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.push(i);<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+			}<br>
+	
+		</code></li>
+
+</ul>
 
 </div>
 
