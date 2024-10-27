@@ -100,9 +100,19 @@
 <hr>
 
 <h1>Operația de insert</h1>
-<li>Vom face inserarea obișnuită, ca pe un Binary Search Tree normal iar apoi vom colora nodul <b style="color: red;">roșu</b>.</li>
+<li>Singura proprietate încălcată de inserarea unui nod <b style="color: red;">roșu</b> este aceea cu 2 noduri roșii consecutive.</li>
+<li>Dacă am insera un nod <b style="color: black;">negru</b> acesta ar strica mult mai mult și ar îngreuna procesul de rebalansare.</li>
+<li>Arborele, în acest caz se rebalansează prin metoda <code>RBInsertFixup</code></li>
+<li>Implementare (github) : <a href="https://github.com/sSlepa/Invers-Hash-si-altele/blob/main/RB_Insert.cpp" 
+	target="_blank" style="color: black;">RB_Insert</a></li>
+
+<hr>
+
+<h1>Operația de delete</h1>
 <li></li>
-</div>
+
+<li>Implementare (github) : <a href="" 
+	target="_blank" style="color: black;">RB_Delete</a></li>
 
 <hr>
 
