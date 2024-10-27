@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Master</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../../style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary .bg-success">
+		<div class="container">
+			<a class="navbar-brand" href="../../main.html">slepa.ro</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="../../course.html"
+						  	title="course">Materiale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../usefull_websites.html"
+						  	title="course">Usefull Websites</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../contact.html"
+						  	title="course" >Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class = "content">
+	<h1 style="margin-top: 5px;">Algoritmul lui Lee</h1>
+
+<hr>
+
+<h2>Ce este Algoritmul lui Lee ?</h2>
+<ul>
+<li>Pe scurt, algoritmul cauta drumul minim (proprietatea default, însă aceasta poate fi extinsă / modificată) într-o matrice.</li>
+<li>Se bazează pe algoritmul <b>BFS</b> de la grafuri.</li>
+<li>Implementare pentru cea mai standard problema : <a href="https://github.com/sSlepa/Invers-Hash-si-altele/blob/main/lee.cpp" target ="_blank" style="color: black;">Algoritmul lui Lee (github)</a></li>
+
+</ul>
+
+<hr>
+
+<h2>Extindere în 3D</h2>
+<ul>
+<li>Basically, putem face lee pe câte dimensiuni dorim (trebuie sa ne asiguram că are și sens problema).</li>
+<li>Cel mai întâlnit este lee-ul in 2D si 3D.</li>
+<li>Cel mai ușor se poate înțelege această extindere astfel : <code>dist[h][x][y] - distanța din start pana pe nivelul H, la coordonatele X si Y</code></li>
+<li>Mai ușor, fiecare H reprezintă un Lee 2D, iar H-ul il vom schimba conform cerinței problemei.</li>
+<li>Implementarea problemei <a href="https://github.com/sSlepa/Invers-Hash-si-altele/blob/main/susan.cpp" 
+    target="_blank" style="color: black;"> susan </a> de pe pbinfo : </li>
+</ul>
+
+<hr>
+
+<h1>Probleme în care se pot utiliza <code>Algoritmul lui Lee</code>.</h1>
+<ul>
+	<style>
+		a{
+			display : inline-block;
+            font-size: 18px;
+            text-decoration: underline;
+            color: black;
+		}
+	</style>
+
+    <li><a href="https://www.pbinfo.ro/probleme/864/roboti" target="_blank">Roboti</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/4505/mewtwo" target="_blank">MewTwo</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1856/taxe2" target="_blank">taxe2</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1099/insule" target="_blank">insule</a></li>
+	<li><a href="https://www.pbinfo.ro/probleme/1998/rover" target="_blank">Rover</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1134/panda" target="_blank">Panda</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/1761/brutar" target="_blank">brutar</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/628/cub1" target="_blank">cub1 </a> (Lee 3D)</li>
+    <li><a href="https://www.pbinfo.ro/probleme/1337/susan" target="_blank">susan </a> (Lee 3D)</li>
+    <li><a href="https://www.pbinfo.ro/probleme/2894/barlog" target="_blank">barlog</a></li>
+    <li><a href="https://www.pbinfo.ro/probleme/4246/banana" target="_blank">banana</a></li>
+
+</ul>
+
+<hr>
+
+</div>
+
+<h2 style="font: 50px;">Materialul este încă in lucru. Pentru sugestii și greșeli observate verificați tab-ul de contact. </h2><br>
+
+</body>
+
+</html>
